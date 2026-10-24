@@ -30,16 +30,16 @@ public class Municipality extends AppCompatActivity {
                 findViewById(R.id.municipalityDescription);
         Button visitButton = findViewById(R.id.visitSiteButton);
 
-        municipality = getIntent().getStringExtra("municipality_name");
+        String input = getIntent().getStringExtra("municipality_name");
+
+        municipality = TextProcessor.processMunicipality(input);
 
         if (municipality == null) {
-            Toast.makeText(this, "Municipality not found",
+            Toast.makeText(this, "Invalid municipality",
                     Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
-
-        municipality = municipality.trim();
 
         int imageRes;
         int colourRes;
